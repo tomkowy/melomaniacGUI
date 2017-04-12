@@ -1,51 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8" />
-	<title>
-		Melomaniac
-	</title>
-	<link href="Supernice.css" rel="stylesheet"/>
+    <meta charset="utf-8" />
+    <title>
+        Melomaniac
+    </title>
+    <link href="Supernice.css" rel="stylesheet" />
+    <script src='/dev/js/jquery-2.2.4.min.js'></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	<meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width" />
+    <script src='/app/fbConnector.js'></script>
+    <script src='/app/app.js'></script>
 </head>
+
 <body>
-
     <header>
-		<div class="container-fluid">
-			<div class="row" style="background-color:pink;">
-				<div class="col-sm-2 text-left"><p>LOGO</p></div>
-				<div class="col-sm-6 text-center"><p>wyszukiwanie</p></div>
-				<div class="col-sm-4 text-right"><p>zdjęcie + imię + nazwisko</p></div>
-			</div> 
-		</div>
+        <div class="container-fluid">
+            <div class="row" style="background-color:pink;">
+                <div class="col-sm-2 text-left">
+                    <p>LOGO</p>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <p>wyszukiwanie</p>
+                    <button class="btn btn-default" onclick="showArtists()">Pokaż mi kurwa muzykę</button>
+                    <button class="btn btn-default" onclick="showFriends()">Pokaż mi moich ziomeczków</button>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <p id="picture">zdjęcie</p>
+                    <p id="username">imię + nazwisko</p>
+                    <button class="btn btn-default" onclick="logoutAndRedirect()" id="logout">Wyloguj</button>
+                </div>
+            </div>
+        </div>
     </header>
-
     <div id="body">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-9">
-					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>Może Ci się spodobać:</p></div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6" style="background-color:lavender;"><p>utwory 1. kolumna</p></div>
-						<div class="col-sm-6" style="background-color:gray;"><p>utwory 2. kolumna</p></div>
-					</div>
-				</div>
-				<div class="col-sm-3" style="background-color:lavenderblush;">
-					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>Aktywność Twoich znajomych</p></div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>miejsce na komentarze znajomych</p></div>
-					</div>
-				</div>
-			</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-12" style="background-color:lightyellow;">
+                            <p>Może Ci się spodobać:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6" style="background-color:lavender;">
+                            <p>utwory 1. kolumna</p>
+                        </div>
+                        <div class="col-sm-6" style="background-color:gray;">
+                            <p>utwory 2. kolumna</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="background-color:lavenderblush;">
+                    <div class="row">
+                        <div class="col-sm-12" style="background-color:lightyellow;">
+                            <p>Aktywność Twoich znajomych</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" style="background-color:lightyellow;">
+                            <p>miejsce na komentarze znajomych</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
     <footer>
         <div class="container-fluid">
             <div class="row">
@@ -56,4 +78,5 @@
         </div>
     </footer>
 </body>
+
 </html>
