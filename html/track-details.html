@@ -5,78 +5,89 @@
 	<title>
 		Melomaniac
 	</title>
-	<link href="Supernice.css" rel="stylesheet"/>
+	<link href="Style/DarkGray.css" rel="stylesheet"/>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
 
     <header>
-		<div class="container-fluid">
-			<div class="row" style="background-color:pink;">
-				<div class="col-sm-2 text-left"><p>LOGO</p></div>
-				<div class="col-sm-6 text-center"><p>wyszukiwanie</p></div>
-				<div class="col-sm-4 text-right"><p>zdjęcie + imię + nazwisko</p></div>
-			</div> 
-		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-5 text-left navbar-header">
+						<h2>Melomaniac</h2>
+					</div>
+					<div class="col-sm-2 text-center" style="padding-top: 15px">
+						<input type="search" class="form-control">
+					</div>
+					<div class="col-sm-5 text-right" style="padding-top: 10px">
+						<p id="picture">zdjęcie</p>
+						<p id="username">imię + nazwisko</p>
+						<button class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</button>
+					</div>
+				</div> 
+			</div>
+		</nav>
     </header>
 
     <div id="body">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-3" style="background-color:lightgray;">
-					<p>Oceny</p>
+				<div class="col-sm-3">
+					<h2>Oceny</h2>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>miejsce na statystyki</p></div>
+						<div class="col-sm-12"><p>miejsce na statystyki</p></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>miejsce na oceny znajomych</p></div>
+						<div class="col-sm-12"><p>miejsce na oceny znajomych</p></div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="row">
-						<div class="col-sm-8" style="background-color:lightcyan;">
+						<div class="col-sm-8">
 							<div class="row">
-								<div class="col-sm-12" style="background-color:lavender;"><p>miejsce na okładkę płyty</p></div>
+								<div class="col-sm-12"><p>miejsce na okładkę płyty</p></div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12" style="background-color:green;"><p>miejsce na informacje o utworze</p></div>
+								<div class="col-sm-12"><p>miejsce na informacje o utworze</p></div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12" style="background-color:lavender;"><p>miejsce na player</p></div>
+								<div class="col-sm-12"><p>miejsce na player</p></div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12" style="background-color:green;"><p>przycisk udostępniania</p></div>
+								<div class="col-sm-12"><p>przycisk udostępniania</p></div>
 							</div>
 						</div>
 						<div class="col-sm-4" >
 							<div class="row">
-								<div class="col-sm-12" style="background-color:lavender;"><p>Podobne utwory</p></div>
+								<div class="col-sm-12"><h3>Podobne utwory</h3></div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12" style="background-color:lavender;"><p>miejsce na utwory</p></div>
+								<div class="col-sm-12"><p>miejsce na utwory</p></div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:lavender;"><p>Najlepsza cena</p></div>
+						<div class="col-sm-12"><h1>Najlepsza cena</h1></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-4" style="background-color:lavender;"><p>najlepsza 1</p></div>
-						<div class="col-sm-4" style="background-color:lavender;"><p>najlepsza 2</p></div>
-						<div class="col-sm-4" style="background-color:lavender;"><p>najlepsza 3</p></div>
+						<div class="col-sm-4"><p>najlepsza 1</p></div>
+						<div class="col-sm-4"><p>najlepsza 2</p></div>
+						<div class="col-sm-4"><p>najlepsza 3</p></div>
 					</div>
 				</div>
-				<div class="col-sm-3" style="background-color:lavenderblush;">
+				<div class="col-sm-3">
 					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>Komentarze</p></div>
+						<div class="col-sm-12"><h2>Komentarze</h2></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>miejsce na komentarze znajomych</p></div>
+						<div class="col-sm-12"><p>miejsce na komentarze znajomych</p></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:lightyellow;"><p>miejsce na wpisanie własnego komentarza</p></div>
+						<div class="col-sm-12"><p>miejsce na wpisanie własnego komentarza</p></div>
 					</div>
 				</div>
 			</div>

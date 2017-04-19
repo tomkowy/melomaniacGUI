@@ -5,21 +5,32 @@
 	<title>
 		Melomaniac
 	</title>
-	<link href="Supernice.css" rel="stylesheet"/>
+	<link href="Style/DarkGray.css" rel="stylesheet"/>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
 
     <header>
-		<div class="container-fluid">
-			<div class="row" style="background-color:pink;">
-				<div class="col-sm-2 text-left"><p>LOGO</p></div>
-				<div class="col-sm-6 text-center"><p>wyszukiwanie</p></div>
-				<div class="col-sm-4 text-right"><p>zdjęcie + imię + nazwisko</p></div>
-			</div> 
-		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-5 text-left navbar-header">
+						<h2>Melomaniac</h2>
+					</div>
+					<div class="col-sm-2 text-center" style="padding-top: 15px">
+						<input type="search" class="form-control">
+					</div>
+					<div class="col-sm-5 text-right" style="padding-top: 10px">
+						<p id="picture">zdjęcie</p>
+						<p id="username">imię + nazwisko</p>
+						<button class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</button>
+					</div>
+				</div> 
+			</div>
+		</nav>
     </header>
 
     <div id="body">
@@ -27,27 +38,27 @@
 			<div class="row">
 				<div class="col-sm-5">
 					<div class="row">
-						<div class="col-sm-12" style="background-color:blue;"><p>Wyniki wyszukiwania dla:</p></div>
+						<div class="col-sm-12"><h3>Wyniki wyszukiwania dla:</h3></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-4" style="background-color:yellow;"><p>miejsce na okładkę</p></div>
-						<div class="col-sm-8" style="background-color:blue;"><p>miejsce na dane o utworze</p></div>
+						<div class="col-sm-4"><p>miejsce na okładkę</p></div>
+						<div class="col-sm-8"><p>miejsce na dane o utworze</p></div>
 					</div>
 				</div>
 				<div class="col-sm-5">
 					<div class="row">
-						<div class="col-sm-12" style="background-color:blue;"><p>Komentarze:</p></div>
+						<div class="col-sm-12"><h3>Komentarze:</h3></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:red;"><p>miejsce na komentarze</p></div>
+						<div class="col-sm-12"><p>miejsce na komentarze</p></div>
 					</div>
 				</div>
 				<div class="col-sm-2">
 					<div class="row">
-						<div class="col-sm-12" style="background-color:blue;"><p>Oceny:</p></div>
+						<div class="col-sm-12"><h3>Oceny:</h3></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12" style="background-color:yellow;"><p>miejsce na oceny</p></div>
+						<div class="col-sm-12"><p>miejsce na oceny</p></div>
 					</div>
 				</div>
 			</div>

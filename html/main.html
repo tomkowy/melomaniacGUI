@@ -6,61 +6,64 @@
     <title>
         Melomaniac
     </title>
-    <link href="Supernice.css" rel="stylesheet" />
+    <link href="Style/DarkGray.css" rel="stylesheet" />
     <script src='/dev/js/jquery-2.2.4.min.js'></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
     <script src='/app/fbConnector.js'></script>
     <script src='/app/app.js'></script>
 </head>
 
-<body>
-    <header>
-        <div class="container-fluid">
-            <div class="row" style="background-color:pink;">
-                <div class="col-sm-2 text-left">
-                    <p>LOGO</p>
-                </div>
-                <div class="col-sm-6 text-center">
-                    <p>wyszukiwanie</p>
-                    <button class="btn btn-default" onclick="showArtists()">Pokaż mi kurwa muzykę</button>
-                    <button class="btn btn-default" onclick="showFriends()">Pokaż mi moich ziomeczków</button>
-                </div>
-                <div class="col-sm-4 text-right">
-                    <p id="picture">zdjęcie</p>
-                    <p id="username">imię + nazwisko</p>
-                    <button class="btn btn-default" onclick="logoutAndRedirect()" id="logout">Wyloguj</button>
-                </div>
-            </div>
-        </div>
+<body>	
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4 text-left navbar-header">
+						<h2>Melomaniac</h2>
+					</div>
+					<div class="col-sm-4 text-center" style="padding-top: 15px">
+						<button class="btn btn-primary" onclick="showArtists()">Pokaż mi kurwa muzykę</button>
+						<button class="btn btn-primary" onclick="showFriends()">Pokaż mi moich ziomeczków</button>
+					</div>
+					<div class="col-sm-4 text-right" style="padding-top: 10px">
+						<p id="picture">zdjęcie</p>
+						<p id="username">imię + nazwisko</p>
+						<button class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</button>
+					</div>
+				</div> 
+			</div>
+		</nav>
     </header>
+	
     <div id="body">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row">
-                        <div class="col-sm-12" style="background-color:lightyellow;">
-                            <p>Może Ci się spodobać:</p>
+                        <div class="col-sm-12">
+                            <h2>Może Ci się spodobać</h2>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6" style="background-color:lavender;">
+                        <div class="col-sm-6">
                             <p>utwory 1. kolumna</p>
                         </div>
-                        <div class="col-sm-6" style="background-color:gray;">
+                        <div class="col-sm-6">
                             <p>utwory 2. kolumna</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3" style="background-color:lavenderblush;">
+                <div class="col-sm-3">
                     <div class="row">
-                        <div class="col-sm-12" style="background-color:lightyellow;">
-                            <p>Aktywność Twoich znajomych</p>
+                        <div class="col-sm-12">
+                            <h2>Aktywność Twoich znajomych</h2>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12" style="background-color:lightyellow;">
+                        <div class="col-sm-12">
                             <p>miejsce na komentarze znajomych</p>
                         </div>
                     </div>
