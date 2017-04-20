@@ -92,7 +92,7 @@ function getPictureUrl(callback) { //w argumencie dla callbacka zwraca url zdję
 
 
 function getFriends(callback) { //w argumencie dla callbacka zwraca listę znajomych którzy korzystają z tej aplikacji (w sensie zalogowali się kiedyś)
-    FB.api(                     //lista elementów {id, nazwa użytkownika}
+    FB.api( //lista elementów {id, nazwa użytkownika}
         '/me/friends',
         'GET', {},
         function(response) {
@@ -118,5 +118,16 @@ function getArtists(limit, callback) { //w argumencie dla callbacka zwraca list�
             }
         );
     });
+}
 
+function fbPublish(text, callback) {
+    fbRefreshSession(function() {
+        FB.api('/me/feed',
+            'POST', { message: text },
+            function(response) {
+                if (!response || response.error) {
+                    alert("Wystąpił błąd podczas publikowania");
+                } else callback();
+            });
+    });
 }

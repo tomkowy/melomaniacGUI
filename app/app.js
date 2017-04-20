@@ -56,6 +56,11 @@ function showFriends() {
     });
 }
 
+function publishOnFb() {
+    text = prompt("Pochwal się jakie genialne gówno znalazłeś dzięki naszej stronce");
+    fbPublish(text);
+}
+
 
 function logoutAndRedirect() {
     fbLogout(function() {
