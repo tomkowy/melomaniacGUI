@@ -9,7 +9,8 @@ $(document).ready(function() {
     } else {
         fbInit();
     }
-
+    
+    scInit();
 });
 
 function initFbAndRedirect() {
@@ -65,5 +66,13 @@ function publishOnFb() {
 function logoutAndRedirect() {
     fbLogout(function() {
         window.location = "/html/sign-in.html";
+    });
+}
+
+function showMusicSuggestions() {
+    getArtists(100, function(artists){
+        var tracks = getTracksOfArtists(2, artists);
+        console.log(tracks);
+        //wziac urle z trackow i wygenerowac playery
     });
 }

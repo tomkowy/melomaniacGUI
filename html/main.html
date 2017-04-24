@@ -13,6 +13,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
     <script src='/app/fbConnector.js'></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <script src="/app/scConnector.js"></script>
     <script src='/app/app.js'></script>
 </head>
 
@@ -25,7 +27,7 @@
 						<h2>Melomaniac</h2>
 					</div>
 					<div class="col-sm-4 text-center" style="padding-top: 15px">
-						<button class="btn btn-primary" onclick="showArtists()">Pokaż mi kurwa muzykę</button>
+						<button class="btn btn-primary" onclick="showArtists(); showMusicSuggestions()">Pokaż mi kurwa muzykę</button>
 						<button class="btn btn-primary" onclick="showFriends()">Pokaż moich ziomeczków</button>
                         <button class="btn btn-primary" onclick="publishOnFb()">Wrzuć na fejsa</button>
 					</div>
