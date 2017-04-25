@@ -10,37 +10,38 @@
     <script src='/dev/js/jquery-2.2.4.min.js'></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
     <script src='/app/fbConnector.js'></script>
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
     <script src="/app/scConnector.js"></script>
+    <script src="/app/beConnector.js"></script>
     <script src='/app/app.js'></script>
 </head>
 
-<body>	
-	<header>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-4 text-left navbar-header">
-						<h2>Melomaniac</h2>
-					</div>
-					<div class="col-sm-4 text-center" style="padding-top: 15px">
-						<button class="btn btn-primary" onclick="showArtists(); showMusicSuggestions()">Pokaż mi kurwa muzykę</button>
-						<button class="btn btn-primary" onclick="showFriends()">Pokaż moich ziomeczków</button>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4 text-left navbar-header">
+                        <h2>Melomaniac</h2>
+                    </div>
+                    <div class="col-sm-4 text-center" style="padding-top: 15px">
+                        <button class="btn btn-primary" onclick="showArtists(); showMusicSuggestions()">Pokaż mi kurwa muzykę</button>
+                        <button class="btn btn-primary" onclick="showFriends()">Pokaż moich ziomeczków</button>
                         <button class="btn btn-primary" onclick="publishOnFb()">Wrzuć na fejsa</button>
-					</div>
-					<div class="col-sm-4 text-right" style="padding-top: 10px">
-						<span id="picture">zdjęcie</span>
-						<span id="username">imię + nazwisko</span>
-						<span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
-					</div>
-				</div> 
-			</div>
-		</nav>
+                    </div>
+                    <div class="col-sm-4 text-right" style="padding-top: 10px">
+                        <span id="picture">zdjęcie</span>
+                        <span id="username">imię + nazwisko</span>
+                        <span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
-	
+
     <div id="body">
         <div class="container-fluid">
             <div class="row">
