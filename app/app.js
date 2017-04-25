@@ -71,8 +71,14 @@ function logoutAndRedirect() {
 
 function showMusicSuggestions() {
     getArtists(100, function(artists){
-        var tracks = getTracksOfArtists(2, artists);
-        console.log(tracks);
-        //wziac urle z trackow i wygenerowac playery
+        artists.forEach(function(artist, i) {
+            getTracksOfArtist(2, artist, function(tracks) {
+                tracks.forEach(function(track, j) {
+                    //generateSoundWrapper(track, function(wrapper){
+                    //    $("#wrapper_container").append(wrapper.html);
+                    //}) to jeszcze mi nie dziala - cierpliwosci :D
+                })
+            })
+        })
     });
 }
