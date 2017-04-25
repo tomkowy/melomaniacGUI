@@ -16,14 +16,14 @@
                     if (onSuccess) {
                         onSuccess(data, textStatus, xhr);
                     } else {
-                        console.log('Success - ajax request has been sent, add second parameter to handle data.');
+                        console.log('Success - ajax request has been sent, add function(data, textStatus, xhr) as second parameter to handle data.');
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     if (onFail) {
                         onFail(data, textStatus, xhr);
                     } else {
-                        console.log('Fail - ajax request has not been sent, add third parameter to handle error data.');
+                        console.log('Fail - ajax request has not been sent, add function(data, textStatus, xhr) as third parameter to handle error data.');
                     }
                 }
             });
@@ -89,5 +89,5 @@
         };
     }
 
-    document.backend = new BackEndConnector("http://localhost:55370/");
+    document.backend = new BackEndConnector("http://localhost:55370");
 }());
