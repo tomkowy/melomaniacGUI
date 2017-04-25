@@ -1,3 +1,20 @@
+/*
+Usage example:
+
+document.backend.commentService.getAllForTrack(123,
+    function (data, textStatus, xhr) {
+        //This is success handler - do whatever you want width obrained data.
+        console.log("Success", data, textStatus, xhr);
+    },
+    function (data, textStatus, xhr) {
+        //This is failure handler - runs when your request was not served correctly (wrong input data/server error).
+        console.log("Failed", data, textStatus, xhr);
+    }
+);
+
+*/
+
+
 (function () {
     "use strict";
     /*global
@@ -90,4 +107,5 @@
     }
 
     document.backend = new BackEndConnector("http://localhost:55370");
+
 }());
