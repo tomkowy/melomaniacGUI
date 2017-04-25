@@ -3,7 +3,7 @@ Usage example:
 
 document.backend.commentService.getAllForTrack(123,
     function (data, textStatus, xhr) {
-        //This is success handler - do whatever you want width obrained data.
+        //This is success handler - do whatever you want width obtained data.
         console.log("Success", data, textStatus, xhr);
     },
     function (data, textStatus, xhr) {
