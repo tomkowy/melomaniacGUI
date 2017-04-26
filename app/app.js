@@ -5,12 +5,13 @@ $(document).ready(function() {
     } else if (window.location.href.indexOf("main") > 0) {
         fbInit(function() {
             setUsernameAndPicture();
+            
+            scInit();
+            showMusicSuggestions();
         });
     } else {
         fbInit();
     }
-    
-    scInit();
 });
 
 function initFbAndRedirect() {
@@ -69,14 +70,26 @@ function logoutAndRedirect() {
     });
 }
 
+// ----------------  main.html ---------------
+
 function showMusicSuggestions() {
     getArtists(100, function(artists){
         artists.forEach(function(artist, i) {
             getTracksOfArtist(2, artist, function(tracks) {
                 tracks.forEach(function(track, j) {
-                    //generateSoundWrapper(track, function(wrapper){
-                    //    $("#wrapper_container").append(wrapper.html);
-                    //}) to jeszcze mi nie dziala - cierpliwosci :D
+                    var suggestionDiv = 
+                        '<div class="row">' + 
+                            '<div class="col-xs-4">' +
+                                '<img width="200" height="200" src="' + track.artwork_url + '" />' +
+                            '</div>' +
+                            '<div class="col-xs-8">' +
+                                '<div class="col-xs-12">Artysta: ' + track.user.username + '</div>' +
+                                '<div class="col-xs-12">Utwór: ' + track.title + '</div>' +
+                                '<div class="col-xs-12">Gatunek: ' + track.genre + '</div>' +
+                                '<div class="col-xs-12">Data utworzenia: ' + track.created_at + '</div>' +
+                            '</div>' +
+                        '</div>';
+                    $("#suggestions_container").append(suggestionDiv);
                 })
             })
         })

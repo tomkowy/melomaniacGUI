@@ -17,6 +17,7 @@
     <script src="/app/scConnector.js"></script>
     <script src="/app/beConnector.js"></script>
     <script src='/app/app.js'></script>
+    <script src='/app/main.js'></script>
 </head>
 
 <body>
@@ -28,7 +29,6 @@
                         <h2>Melomaniac</h2>
                     </div>
                     <div class="col-sm-4 text-center" style="padding-top: 15px">
-                        <button class="btn btn-primary" onclick="showArtists(); showMusicSuggestions()">Pokaż mi kurwa muzykę</button>
                         <button class="btn btn-primary" onclick="showFriends()">Pokaż moich ziomeczków</button>
                         <button class="btn btn-primary" onclick="publishOnFb()">Wrzuć na fejsa</button>
                     </div>
@@ -47,19 +47,15 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-9 col-sm-offset-3">
                             <h2>Może Ci się spodobać</h2>
-                            <div id="wrappers_container">
-                                
-                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <p>utwory 1. kolumna</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p>utwory 2. kolumna</p>
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <div id="suggestions_container">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,5 +84,4 @@
         </div>
     </footer>
 </body>
-
 </html>
