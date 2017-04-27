@@ -21,67 +21,213 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-4 text-left navbar-header">
-                        <h2>Melomaniac</h2>
-                    </div>
-                    <div class="col-sm-4 text-center" style="padding-top: 15px">
-                        <button class="btn btn-primary" onclick="showFriends()">Pokaż moich ziomeczków</button>
-                        <button class="btn btn-primary" onclick="publishOnFb()">Wrzuć na fejsa</button>
-                    </div>
-                    <div class="col-sm-4 text-right" style="padding-top: 10px">
-                        <span id="picture">zdjęcie</span>
-                        <span id="username">imię + nazwisko</span>
-                        <span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+	<div id="container">
+		<header>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-4 text-left navbar-header">
+							<h2>Melomaniac</h2>
+						</div>
+						<div class="col-sm-4 text-center" style="padding-top: 15px">
+							<button class="btn btn-primary" onclick="showFriends()">Pokaż moich ziomeczków</button>
+							<button class="btn btn-primary" onclick="publishOnFb()">Wrzuć na fejsa</button>
+						</div>
+						<div class="col-sm-4 text-right" style="padding-top: 10px">
+							<span id="picture">zdjęcie</span>
+							<span id="username">imię + nazwisko</span>
+							<span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-    <div id="body">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-9 col-sm-offset-3">
-                            <h2>Może Ci się spodobać</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-9 col-sm-offset-3">
-                            <div id="suggestions_container">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h2>Aktywność Twoich znajomych</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>miejsce na komentarze znajomych</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12" style="margin-top: 20px;">
-                    <p class="text-right" style="font-size: x-small">Tekst stopki</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+		<div id="body">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<h2>Może Ci się spodobać</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3 activity-left">
+								<div id="suggestions_container">
+								 
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Aktywność Twoich znajomych</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 activity-right">
+								<!-- początek sekcji komentarza -->
+								<div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div>
+								<!-- koniec komentarza -->
+								<div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div><div class="row">
+									<div class="col-sm-3">
+										<p>zdjęcie</p>
+									</div>
+									<div class="col-sm-9">
+										<div class="row"><b>Imię Nazwisko "coś"</b></div>
+										<div class="row">
+											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+										</div>
+									</div>
+								</div>
+								<!-- tuu -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12" style="margin-top: 20px;">
+						<p class="text-right" style="font-size: x-small">Tekst stopki</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>	
 </body>
 </html>

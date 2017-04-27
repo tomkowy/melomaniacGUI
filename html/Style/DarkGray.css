@@ -4,8 +4,10 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+html,
 body {
   margin: 0;
+  /* overflow: hidden; */
 }
 article,
 aside,
@@ -21,6 +23,46 @@ section,
 summary {
   display: block;
 }
+/* wlasne */
+.activity-right,
+.activity-left,
+.scroll-right-sm,
+.scroll-left-md {
+	overflow-y: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.activity-right {
+	right: 0;
+	height: 70vh;
+}
+.activity-left {
+	left: 0;
+	height: 70vh;
+}
+.scroll-right-sm {
+	height: 40vh;
+	right: 0;
+}
+.scroll-left-md {
+	height: 60vh;
+	left: 0;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+}
+#body {
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+#container {
+	position: relative;
+	min-height: 100vh;
+}
+/* koniec wlasnych */
 audio,
 canvas,
 progress,

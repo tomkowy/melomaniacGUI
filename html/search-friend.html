@@ -15,82 +15,83 @@
 </head>
 
 <body>
+	<div id="container">
+		<header>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-5 text-left navbar-header">
+							<h2>Melomaniac</h2>
+						</div>
+						<div class="col-sm-2 text-center" style="padding-top: 15px">
+							<input type="search" class="form-control">
+						</div>
+						<div class="col-sm-5 text-right" style="padding-top: 10px">
+							<span id="picture">zdjęcie</span>
+							<span id="username">imię + nazwisko</span>
+							<span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-    <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-5 text-left navbar-header">
-                        <h2>Melomaniac</h2>
-                    </div>
-                    <div class="col-sm-2 text-center" style="padding-top: 15px">
-                        <input type="search" class="form-control">
-                    </div>
-                    <div class="col-sm-5 text-right" style="padding-top: 10px">
-                        <p id="picture">zdjęcie</p>
-                        <p id="username">imię + nazwisko</p>
-                        <button class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+		<div id="body">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3>Wyniki wyszukiwania dla:</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4">
+								<p>miejsce na okładkę</p>
+							</div>
+							<div class="col-sm-8">
+								<p>miejsce na dane o utworze</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3>Komentarze:</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<p>miejsce na komentarze</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3>Oceny:</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<p>miejsce na oceny</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div id="body">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Wyniki wyszukiwania dla:</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <p>miejsce na okładkę</p>
-                        </div>
-                        <div class="col-sm-8">
-                            <p>miejsce na dane o utworze</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Komentarze:</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>miejsce na komentarze</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Oceny:</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>miejsce na oceny</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12" style="margin-top: 20px;">
-                    <p class="text-right" style="font-size: x-small">Tekst stopki</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12" style="margin-top: 20px;">
+						<p class="text-right" style="font-size: x-small">Tekst stopki</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 </body>
 
 </html>
