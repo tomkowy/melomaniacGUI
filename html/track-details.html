@@ -7,178 +7,184 @@
         Melomaniac
     </title>
     <link href="Style/DarkGray.css" rel="stylesheet" />
+    <script src='/dev/js/jquery-2.2.4.min.js'></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
+    <script src='/app/fbConnector.js'></script>
+    <script src="/app/scConnector.js"></script>
     <script src="/app/beConnector.js"></script>
+    <script src="/app/app.js"></script>
 </head>
 
 <body>
-	<div id="container">
-		<header>
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-sm-5 text-left navbar-header">
-							<h2>Melomaniac</h2>
-						</div>
-						<div class="col-sm-2 text-center" style="padding-top: 15px">
-							<input type="search" class="form-control">
-						</div>
-						<div class="col-sm-5 text-right" style="padding-top: 15px">
-							<span id="picture">zdjęcie</span>
-							<span id="username">imię + nazwisko</span>
-							<span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
+    <div id="container">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-5 text-left navbar-header">
+                            <h2>Melomaniac</h2>
+                        </div>
+                        <div class="col-sm-2 text-center" style="padding-top: 15px">
+                            <input type="search" class="form-control">
+                        </div>
+                        <div class="col-sm-5 text-right" style="padding-top: 15px">
+                            <span id="picture">zdjęcie</span>
+                            <span id="username">imię + nazwisko</span>
+                            <span class="btn btn-primary btn-sm" onclick="logoutAndRedirect()" id="logout">Wyloguj</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-		<div id="body">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-3">
-						<h2>Oceny</h2>
-						<div class="row">
-							<div class="col-sm-12">
-								<p>Liczba ocen: <b>4242342</b></p>
-								<p>Średnia ocena: <b>4.6</b></p>
-								<span>Twoja ocena: </span>
-								<select>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 scroll-left-md" style="padding-top: 10px">
-							
-							<!-- przykladowa ocena -->
-								<div class="row">
-									<div class="col-sm-3">
-										<p>zdjęcie</p>
-									</div>
-									<div class="col-sm-9">
-										<div class="row"><b>Imię Nazwisko:</b></div>
-										<div class="row">
-											<p>1</p>
-										</div>
-									</div>
-								</div>
-							<!-- koniec -->	
-							
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="row">
-							<div class="col-sm-8">
-								<div class="row">
-									<div class="col-sm-12">
-										<p>miejsce na okładkę płyty</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12">
-										<p>miejsce na informacje o utworze</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12">
-										<p>miejsce na player</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12">
-										<p>przycisk udostępniania</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="row">
-									<div class="col-sm-12">
-										<h3>Podobne utwory</h3>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12 scroll-right-sm">
-									
-										<p>miejsce na utwory</p>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<h1>Najlepsza cena</h1>
-							</div>
-						</div>
-						<div class="row align-items-end">
-							<div class="col-sm-4">
-								<p>najlepsza 1</p>
-							</div>
-							<div class="col-sm-4">
-								<p>najlepsza 2</p>
-							</div>
-							<div class="col-sm-4">
-								<p>najlepsza 3</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="row align-items-start">
-							<div class="col-sm-12">
-								<h2>Komentarze</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 activity-right">
-							
-							<!-- przykladowy komentarz -->
-								<div class="row">
-									<div class="col-sm-3">
-										<p>zdjęcie</p>
-									</div>
-									<div class="col-sm-9">
-										<div class="row"><b>Imię Nazwisko</b></div>
-										<div class="row">
-											<p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
-										</div>
-									</div>
-								</div>
-							<!-- koniec komentarza -->
-							
-							</div>
-						</div>
-						<div class="row align-items-end">
-							<div class="col-sm-9">
-								<input type="search" class="form-control">
-							</div>
-							<div class="col-sm-3">
-								<span class="btn btn-primary btn-sm" id="publish">Publikuj</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div id="body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2>Oceny</h2>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Liczba ocen: <b>4242342</b></p>
+                                <p>Średnia ocena: <b>4.6</b></p>
+                                <span>Twoja ocena: </span>
+                                <select>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 scroll-left-md" style="padding-top: 10px">
 
-		<footer>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-12" style="margin-top: 20px;">
-						<p class="text-right" style="font-size: x-small">Tekst stopki</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>	
+                                <!-- przykladowa ocena -->
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p>zdjęcie</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row"><b>Imię Nazwisko:</b></div>
+                                        <div class="row">
+                                            <p>1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- koniec -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>miejsce na okładkę płyty</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>miejsce na informacje o utworze</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>miejsce na player</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>przycisk udostępniania</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Podobne utwory</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 scroll-right-sm">
+
+                                        <p>miejsce na utwory</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1>Najlepsza cena</h1>
+                            </div>
+                        </div>
+                        <div class="row align-items-end">
+                            <div class="col-sm-4">
+                                <p>najlepsza 1</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>najlepsza 2</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>najlepsza 3</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row align-items-start">
+                            <div class="col-sm-12">
+                                <h2>Komentarze</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 activity-right">
+
+                                <!-- przykladowy komentarz -->
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p>zdjęcie</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row"><b>Imię Nazwisko</b></div>
+                                        <div class="row">
+                                            <p style="font-size: small">Treść komentarza, bardzo interesującego, a jakże.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- koniec komentarza -->
+
+                            </div>
+                        </div>
+                        <div class="row align-items-end">
+                            <div class="col-sm-9">
+                                <input type="search" class="form-control">
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="btn btn-primary btn-sm" id="publish">Publikuj</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12" style="margin-top: 20px;">
+                        <p class="text-right" style="font-size: x-small">Tekst stopki</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>

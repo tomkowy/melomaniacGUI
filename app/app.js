@@ -9,8 +9,17 @@ $(document).ready(function () {
             scInit();
             showMusicSuggestions();
         });
+    } else if (window.location.href.indexOf("track-details") > 0) {
+        fbInit(function () {
+            setUsernameAndPicture();
+            var id = window.location.href.split('?id=track_')[1]
+            getTrackDetails(id);
+        });
+
     } else {
-        fbInit();
+        fbInit(function () {
+            setUsernameAndPicture();
+        });
     }
 });
 
@@ -99,5 +108,12 @@ function showMusicSuggestions() {
                 })
             })
         })
+    });
+}
+
+// ----------------  track-details.html ---------------
+function getTrackDetails(id) {
+    getTrack(id, function (data) {
+        console.log(data);
     });
 }
