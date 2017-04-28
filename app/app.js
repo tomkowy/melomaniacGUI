@@ -116,4 +116,17 @@ function getTrackDetails(id) {
     getTrack(id, function (data) {
         console.log(data);
     });
+
+    document.backend.commentService.getAllForTrack(id, function (data) {
+        console.log("comments:", data);
+    }, function (data) {});
+
+    document.backend.rateService.GetAllForTrack(id, function (data) {
+        console.log("ratings", data);
+    }, function () {});
+
+    document.backend.rateService.GetTrackAverageRate(id, function (data) {
+        console.log("averageRate", data);
+    }, function () {});
+
 }
