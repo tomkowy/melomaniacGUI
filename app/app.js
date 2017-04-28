@@ -121,6 +121,7 @@ function getTrackDetails(id) {
 
     document.backend.commentService.getAllForTrack(id, function (data) {
         updateComments();
+        updateRates();
     }, function (data) {});
 
     document.backend.rateService.GetAllForTrack(id, function (data) {
@@ -156,6 +157,23 @@ function trackDetailsController(id) {
 
 
         });
+
+        $('#rateSelect').change(function (s) {
+            var rateValue = $("#rateSelect option:selected").text();
+            getId(function (fbid) {
+
+                var rate = {
+                    fb: fbid,
+                    soundcloud: document.trackId,
+                    mark: parseInt(rateValue),
+                    date: (new Date()).toISOString(),
+                }
+
+                document.backend.rateService.post(rate, function (data) {
+                    updateRates();
+                }, function (e) {});
+            });
+        });
     });
 }
 
@@ -173,13 +191,31 @@ function updateComments() {
                         '</p> </div> </div> </div>';
                     var old = $('#comments-container').html();
                     $('#comments-container').html(old + content);
-
                 }
-
                 getUserById(data[i].fb, callback, data[i]);
             }
-
         }
+    });
+}
 
+
+function updateRates() {
+    document.backend.rateService.GetAllForTrack(document.trackId, function (data) {
+        $('#rate-container').html('');
+
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].fb) {
+                var callback = function (userData, rateData) {
+                    var content = '<div class="row"><div class="col-sm-3">' +
+                        '<img src="' + userData.picture.data.url + '"> </div> <div class="col-sm-9" >' +
+                        '<div class="row"> <b>' + userData.name + '</b></div >' +
+                        '<div class="row"> <p style="font-size: small" >' + rateData.mark +
+                        '</p> </div> </div> </div>';
+                    var old = $('#rate-container').html();
+                    $('#rate-container').html(old + content);
+                }
+                getUserById(data[i].fb, callback, data[i]);
+            }
+        }
     });
 }

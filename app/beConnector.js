@@ -99,9 +99,9 @@ String.prototype.replaceAll = function (search, replacement) {
                     data: id
                 }, onSuccess, onFail);
             },
-            "edit": function (comment, onSuccess, onFail) {
+            "edit": function (rate, onSuccess, onFail) {
                 sendAjax(this.controllerName, "EditRate", "POST", {
-                    data: comment
+                    data: rate
                 }, onSuccess, onFail);
             },
             "remove": function (id, onSuccess, onFail) {
@@ -109,9 +109,9 @@ String.prototype.replaceAll = function (search, replacement) {
                     data: id
                 }, onSuccess, onFail);
             },
-            "post": function (comment, onSuccess, onFail) {
+            "post": function (rate, onSuccess, onFail) {
                 sendAjax(this.controllerName, "PostRate", "POST", {
-                    data: comment
+                    data: rate
                 }, onSuccess, onFail);
             }
         };
