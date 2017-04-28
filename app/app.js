@@ -14,6 +14,7 @@ $(document).ready(function () {
             setUsernameAndPicture();
             var id = window.location.href.split('?id=track_')[1]
             getTrackDetails(id);
+            trackDetailsController(id);
         });
 
     } else {
@@ -131,4 +132,25 @@ function getTrackDetails(id) {
         $('#rateAvg').html(data.avg);
     }, function () {});
 
+}
+
+function trackDetailsController(id) {
+    $(document).ready(function () {
+        $('#publish').click(function () {
+
+            getId(function (fbid) {
+                var newComment = {
+                    fb: fbid,
+                    soundcloud: id,
+                    content: $('#newComment').val(),
+                    date: (new Date()).toISOString(),
+                };
+
+                document.backend.commentService.post(newComment, function () {}, function () {});
+
+            })
+
+
+        });
+    });
 }

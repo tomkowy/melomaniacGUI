@@ -1,6 +1,6 @@
 //inicjalizacja Facebook SDK, koniecznie jako pierwsza wywoływana funkcja w dokumencie
 function fbInit(callback) {
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
             appId: '798879713594636',
             xfbml: true,
@@ -9,12 +9,14 @@ function fbInit(callback) {
             version: 'v2.8'
         });
 
-        if (callback) { callback(); }
+        if (callback) {
+            callback();
+        }
         FB.AppEvents.logPageView();
 
     };
 
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
             return;
@@ -28,13 +30,13 @@ function fbInit(callback) {
 
 
 function fbLoginStatus(callback) { //w argumencie callbacka zwraca status zalogowania ('connected' jeśli zalogowany)
-    FB.getLoginStatus(function(response) {
+    FB.getLoginStatus(function (response) {
         callback(response.status);
     });
 }
 
 function fbRefreshSession(callback) {
-    fbLoginStatus(function(status) {
+    fbLoginStatus(function (status) {
         if (status === 'connected') {
             callback();
         } else {
@@ -46,18 +48,20 @@ function fbRefreshSession(callback) {
 
 function fbLogin(callback) {
     console.log("Logowanie do fb...")
-    FB.login(function(response) {
+    FB.login(function (response) {
         if (response.status === 'connected') {
             console.log("Zalogowano.")
             callback();
         }
-    }, { scope: 'public_profile,user_likes,user_friends,user_actions.music,publish_actions' });
+    }, {
+        scope: 'public_profile,user_likes,user_friends,user_actions.music,publish_actions'
+    });
 }
 
 function fbLogout(callback) {
-    fbLoginStatus(function(status) {
+    fbLoginStatus(function (status) {
         if (status === 'connected') {
-            FB.logout(function(response) {
+            FB.logout(function (response) {
                 callback();
             });
         }
@@ -66,24 +70,40 @@ function fbLogout(callback) {
 }
 
 function getName(callback) { //w argumencie dla callbacka zwraca nazwę zalogowanego użytkownika
-    fbRefreshSession(function() {
+    fbRefreshSession(function () {
         FB.api(
             '/me',
-            'GET', { "fields": "name" },
-            function(response) {
-                callback(response.name);
+            'GET', {
+                "fields": "name"
+            },
+            function (response) {
+                callback(response.id);
             }
         );
     });
-
 }
 
+function getId(callback) { //w argumencie dla callbacka zwraca id zalogowanego użytkownika
+    fbRefreshSession(function () {
+        FB.api(
+            '/me',
+            'GET', {
+                "fields": "id"
+            },
+            function (response) {
+                callback(response.id);
+            }
+        );
+    });
+}
+
+
 function getPictureUrl(callback) { //w argumencie dla callbacka zwraca url zdjęcia profilowego
-    fbRefreshSession(function() {
+    fbRefreshSession(function () {
         FB.api(
             '/me/picture',
             'GET', {},
-            function(response) {
+            function (response) {
                 callback(response.data.url);
             }
         );
@@ -95,7 +115,7 @@ function getFriends(callback) { //w argumencie dla callbacka zwraca listę znajo
     FB.api( //lista elementów {id, nazwa użytkownika}
         '/me/friends',
         'GET', {},
-        function(response) {
+        function (response) {
             callback(response.data)
         }
     );
@@ -103,14 +123,16 @@ function getFriends(callback) { //w argumencie dla callbacka zwraca listę znajo
 
 
 function getArtists(limit, callback) { //w argumencie dla callbacka zwraca listę muzyków
-    fbRefreshSession(function() {
+    fbRefreshSession(function () {
         FB.api(
             '/me',
-            'GET', { "fields": "music.limit(" + limit + ")" }, //[limit] obiektów na stronę
-            function(response) {
+            'GET', {
+                "fields": "music.limit(" + limit + ")"
+            }, //[limit] obiektów na stronę
+            function (response) {
                 var artists = [];
                 if (response.music) {
-                    response.music.data.forEach(function(element, index) {
+                    response.music.data.forEach(function (element, index) {
                         artists.push(element.name);
                     });
                 }
@@ -121,10 +143,12 @@ function getArtists(limit, callback) { //w argumencie dla callbacka zwraca list�
 }
 
 function fbPublish(text, callback) {
-    fbRefreshSession(function() {
+    fbRefreshSession(function () {
         FB.api('/me/feed',
-            'POST', { message: text },
-            function(response) {
+            'POST', {
+                message: text
+            },
+            function (response) {
                 if (!response || response.error) {
                     alert("Wystąpił błąd podczas publikowania");
                 } else callback();

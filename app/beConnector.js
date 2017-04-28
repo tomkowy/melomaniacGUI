@@ -33,7 +33,7 @@ String.prototype.replaceAll = function (search, replacement) {
                 "url": backendUrl + '/api/' + controller + '/' + method,
                 type: type,
                 dataType: 'json',
-                data: data,
+                data: typeof data.data === "object" ? data.data : data,
                 success: function (data, textStatus, xhr) {
                     if (onSuccess) {
                         if (typeof data === 'string') {
