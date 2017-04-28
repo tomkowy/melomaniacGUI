@@ -1,11 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function () {
     if (document.title.indexOf("starting page") > 0) {
         alert('e-handluj z tym');
         initFbAndRedirect();
     } else if (window.location.href.indexOf("main") > 0) {
-        fbInit(function() {
+        fbInit(function () {
             setUsernameAndPicture();
-            
+
             scInit();
             showMusicSuggestions();
         });
@@ -15,8 +15,8 @@ $(document).ready(function() {
 });
 
 function initFbAndRedirect() {
-    fbInit(function() {
-        fbLoginStatus(function(status) {
+    fbInit(function () {
+        fbLoginStatus(function (status) {
             if (status === 'connected') {
                 window.location.href = "/html/main.html";
             } else {
@@ -27,34 +27,34 @@ function initFbAndRedirect() {
 }
 
 function loginAndRedirect() {
-    fbLogin(function() {
+    fbLogin(function () {
         window.location.href = "/html/main.html";
     });
 }
 
 function setUsernameAndPicture() {
-    getName(function(name) {
+    getName(function (name) {
         $("#username").text(name);
     });
 
-    getPictureUrl(function(url) {
-        $("#picture").html("<img src='"+url+"' />");
+    getPictureUrl(function (url) {
+        $("#picture").html("<img src='" + url + "' />");
     });
 }
 
 function showArtists() {
-    getArtists(100, function(artists){
+    getArtists(100, function (artists) {
         alert("Banda pedałów których słuchasz: \n" + artists);
     });
 }
 
 function showFriends() {
-    getFriends(function(friends) {
+    getFriends(function (friends) {
         var friendsNames = [];
-        friends.forEach( function(element, index) {
+        friends.forEach(function (element, index) {
             friendsNames.push(element.name);
         });
-            alert("Frajerzy których znasz korzystający z naszej zajebistej apki: \n" +friendsNames);
+        alert("Frajerzy których znasz korzystający z naszej zajebistej apki: \n" + friendsNames);
     });
 }
 
@@ -65,7 +65,7 @@ function publishOnFb() {
 
 
 function logoutAndRedirect() {
-    fbLogout(function() {
+    fbLogout(function () {
         window.location = "/html/sign-in.html";
     });
 }
@@ -73,23 +73,29 @@ function logoutAndRedirect() {
 // ----------------  main.html ---------------
 
 function showMusicSuggestions() {
-    getArtists(100, function(artists){
-        artists.forEach(function(artist, i) {
-            getTracksOfArtist(2, artist, function(tracks) {
-                tracks.forEach(function(track, j) {
-                    var suggestionDiv = 
-                        '<div class="row">' + 
-                            '<div class="col-xs-4">' +
-                                '<img width="200" height="200" src="' + track.artwork_url + '" />' +
-                            '</div>' +
-                            '<div class="col-xs-8">' +
-                                '<div class="col-xs-12">Artysta: ' + track.user.username + '</div>' +
-                                '<div class="col-xs-12">Utwór: ' + track.title + '</div>' +
-                                '<div class="col-xs-12">Gatunek: ' + track.genre + '</div>' +
-                                '<div class="col-xs-12">Data utworzenia: ' + track.created_at + '</div>' +
-                            '</div>' +
+    getArtists(100, function (artists) {
+        artists.forEach(function (artist, i) {
+            getTracksOfArtist(2, artist, function (tracks) {
+                tracks.forEach(function (track, j) {
+                    var suggestionDiv =
+                        '<div class="row" id="track_' + track.id + '">' +
+                        '<div class="col-xs-4">' +
+                        '<img width="200" height="200" src="' + track.artwork_url + '" />' +
+                        '</div>' +
+                        '<div class="col-xs-8">' +
+                        '<div class="col-xs-12">Artysta: ' + track.user.username + '</div>' +
+                        '<div class="col-xs-12">Utwór: ' + track.title + '</div>' +
+                        '<div class="col-xs-12">Gatunek: ' + track.genre + '</div>' +
+                        '<div class="col-xs-12">Data utworzenia: ' + track.created_at + '</div>' +
+                        '</div>' +
                         '</div>';
                     $("#suggestions_container").append(suggestionDiv);
+                    setTimeout(function () {
+                        $('#track_' + track.id).click(function (e) {
+                            var id = e.currentTarget.id;
+                            window.location.href = window.location.href.replace('main.html', '') + 'track-details.html?id=' + id;
+                        });
+                    }, 1000);
                 })
             })
         })
