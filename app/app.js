@@ -120,7 +120,7 @@ function getTrackDetails(id) {
     });
 
     document.backend.commentService.getAllForTrack(id, function (data) {
-        console.log("comments:", data);
+        updateComments();
     }, function (data) {});
 
     document.backend.rateService.GetAllForTrack(id, function (data) {
@@ -148,6 +148,7 @@ function trackDetailsController(id) {
                 };
 
                 document.backend.commentService.post(newComment, function () {
+                    $('#newComment').val('');
                     updateComments();
                 }, function () {});
 
@@ -160,14 +161,25 @@ function trackDetailsController(id) {
 
 function updateComments() {
     document.backend.commentService.getAllForTrack(document.trackId, function (data) {
-        console.log(data);
+        $('#comments-container').html('');
 
         for (var i = 0; i < data.length; i++) {
-            getUserById(data[i].fb, function (userData) {
-                console.log(userData);
-            });
+            if (data[i].fb) {
+                var callback = function (userData, commentData) {
+                    var content = '<div class="row"><div class="col-sm-3">' +
+                        '<img src="' + userData.picture.data.url + '"> </div> <div class="col-sm-9" >' +
+                        '<div class="row"> <b>' + userData.name + '</b></div >' +
+                        '<div class="row"> <p style="font-size: small" >' + commentData.content +
+                        '</p> </div> </div> </div>';
+                    var old = $('#comments-container').html();
+                    $('#comments-container').html(old + content);
+
+                }
+
+                getUserById(data[i].fb, callback, data[i]);
+            }
+
         }
 
-    }, function () {});
-
+    });
 }

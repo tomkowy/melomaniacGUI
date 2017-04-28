@@ -91,7 +91,7 @@ function getId(callback) { //w argumencie dla callbacka zwraca id zalogowanego u
                 "fields": "id"
             },
             function (response) {
-                callback(response.name);
+                callback(response.id);
             }
         );
     });
@@ -156,7 +156,7 @@ function fbPublish(text, callback) {
     });
 }
 
-function getUserById(searchId, callback) {
+function getUserById(searchId, callback, dataToPass) {
     fbRefreshSession(function () {
         FB.api('/' + searchId,
             'GET', {
@@ -165,7 +165,7 @@ function getUserById(searchId, callback) {
             function (response) {
                 if (!response || response.error) {
                     console.log(response.error);
-                } else callback(response);
+                } else callback(response, dataToPass);
             });
     });
 
