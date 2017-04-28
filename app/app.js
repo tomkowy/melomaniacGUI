@@ -127,6 +127,8 @@ function getTrackDetails(id) {
 
     document.backend.rateService.GetTrackAverageRate(id, function (data) {
         console.log("averageRate", data);
+        $('#rateCount').html(data.numberOfElements);
+        $('#rateAvg').html(data.avg);
     }, function () {});
 
 }

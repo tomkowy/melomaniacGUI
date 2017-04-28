@@ -14,6 +14,11 @@ document.backend.commentService.getAllForTrack(123,
 
 */
 
+String.prototype.replaceAll = function (search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
 
 (function () {
     "use strict";
@@ -31,6 +36,12 @@ document.backend.commentService.getAllForTrack(123,
                 data: data,
                 success: function (data, textStatus, xhr) {
                     if (onSuccess) {
+                        if (typeof data === 'string') {
+                            //data = data.slice(1, -1);
+                            data = data.replaceAll('\'', '"');
+                            data = JSON.parse(data);
+                        }
+
                         onSuccess(data, textStatus, xhr);
                     } else {
                         console.log('Success - ajax request has been sent, add function(data, textStatus, xhr) as second parameter to handle data.');
