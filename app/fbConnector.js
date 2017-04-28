@@ -77,7 +77,7 @@ function getName(callback) { //w argumencie dla callbacka zwraca nazwę zalogowa
                 "fields": "name"
             },
             function (response) {
-                callback(response.id);
+                callback(response.name);
             }
         );
     });
@@ -91,7 +91,7 @@ function getId(callback) { //w argumencie dla callbacka zwraca id zalogowanego u
                 "fields": "id"
             },
             function (response) {
-                callback(response.id);
+                callback(response.name);
             }
         );
     });
@@ -154,4 +154,19 @@ function fbPublish(text, callback) {
                 } else callback();
             });
     });
+}
+
+function getUserById(searchId, callback) {
+    fbRefreshSession(function () {
+        FB.api('/' + searchId,
+            'GET', {
+                "fields": "picture,name"
+            },
+            function (response) {
+                if (!response || response.error) {
+                    console.log(response.error);
+                } else callback(response);
+            });
+    });
+
 }

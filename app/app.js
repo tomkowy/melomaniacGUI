@@ -12,7 +12,8 @@ $(document).ready(function () {
     } else if (window.location.href.indexOf("track-details") > 0) {
         fbInit(function () {
             setUsernameAndPicture();
-            var id = window.location.href.split('?id=track_')[1]
+            var id = window.location.href.split('?id=track_')[1];
+            document.trackId = id;
             getTrackDetails(id);
             trackDetailsController(id);
         });
@@ -146,11 +147,27 @@ function trackDetailsController(id) {
                     date: (new Date()).toISOString(),
                 };
 
-                document.backend.commentService.post(newComment, function () {}, function () {});
+                document.backend.commentService.post(newComment, function () {
+                    updateComments();
+                }, function () {});
 
             })
 
 
         });
     });
+}
+
+function updateComments() {
+    document.backend.commentService.getAllForTrack(document.trackId, function (data) {
+        console.log(data);
+
+        for (var i = 0; i < data.length; i++) {
+            getUserById(data[i].fb, function (userData) {
+                console.log(userData);
+            });
+        }
+
+    }, function () {});
+
 }
