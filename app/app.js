@@ -12,10 +12,13 @@ $(document).ready(function () {
     } else if (window.location.href.indexOf("track-details") > 0) {
         fbInit(function () {
             setUsernameAndPicture();
+            scInit();
             var id = window.location.href.split('?id=track_')[1];
             document.trackId = id;
             getTrackDetails(id);
             trackDetailsController(id);
+            showTrackDetailsFromSC(id);
+            showSimilarTracks(id);
         });
 
     } else {
@@ -89,7 +92,7 @@ function showMusicSuggestions() {
             getTracksOfArtist(2, artist, function (tracks) {
                 tracks.forEach(function (track, j) {
                     var suggestionDiv =
-                        '<div class="row" id="track_' + track.id + '">' +
+                        '<div class="row cursor_pointer" id="track_' + track.id + '">' +
                         '<div class="col-xs-4">' +
                         '<img width="200" height="200" src="' + track.artwork_url + '" />' +
                         '</div>' +
@@ -110,7 +113,7 @@ function showMusicSuggestions() {
                 })
             })
         })
-    });
+    })
 }
 
 // ----------------  track-details.html ---------------
@@ -217,5 +220,48 @@ function updateRates() {
                 getUserById(data[i].fb, callback, data[i]);
             }
         }
+    });
+}
+
+function showTrackDetailsFromSC(id) {
+    getTrack(id, function(track) {
+        $("#artwork").append('<img width="200" height="200" src="' + track.artwork_url + '" />');
+        $("#track_info").append('<div class="row">' +
+            '<div class="col-xs-12">Gatunek: ' + track.genre + '</div>' +
+            '<div class="col-xs-12">Data utworzenia: ' + track.created_at + 
+            '</div>');
+        generateSoundWrapper(track.permalink_url, function(wrapper){
+            $("#soundWrapper").append(wrapper.html); 
+        });
+    });
+}
+
+function showSimilarTracks(trackId) {
+    getTrack(trackId, function(track) {
+        var artist = track.user.username;
+        getTracksOfArtist(11, artist, function(tracks) {
+            tracks.forEach(function (track, j) {
+                if(track.id != trackId) {
+                    var similarDiv = '<div class="row cursor_pointer" id="track_' + track.id + '">' +
+                        '<div class="col-sm-4">' +
+                        '<img width="80" height="80" src="' + track.artwork_url + '" />' +
+                        '</div>' +
+                        '<div class="col-sm-8">' +
+                        '<div class="row similar_description">' +
+                        '<div class="col-sm-12">Artysta: ' + track.user.username + '</div>' +
+                        '<div class="col-sm-12">Utwór: ' + track.title + '</div>' +
+                        '<div class="col-sm-12">Gatunek: ' + track.genre + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                   $("#similar_tracks").append(similarDiv);
+                   setTimeout(function() {
+                        $('#track_' + track.id).click(function () {
+                            window.location.href = window.location.href.replace(trackId, track.id);
+                        });
+                   }, 1000);
+                }
+            });
+        });
     });
 }

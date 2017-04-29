@@ -1,5 +1,6 @@
 var CLIENT_ID = '342b8a7af638944906dcdb46f9d56d98';
 
+// Metoda scInit musi byc wywolana na starcie kazdego widoku (autoryzacja)
 function scInit() {
     SC.initialize({
         client_id: CLIENT_ID
@@ -7,7 +8,7 @@ function scInit() {
 }
 
 function getTrack(trackId, callback) {
-    var successHandler = function (response) {
+    var successHandler = function(response) {
         callback(response[0]);
     }
 
@@ -17,7 +18,7 @@ function getTrack(trackId, callback) {
 }
 
 function getTracksOfArtist(limit, artist, callback) {
-    var successHandler = function (tracks) {
+    var successHandler = function(tracks) {
         callback(tracks);
     }
 
@@ -27,13 +28,13 @@ function getTracksOfArtist(limit, artist, callback) {
     }).then(successHandler);
 }
 
-function generateSoundWrapper(track, callback) {
-    var successHandler = function (oEmbed) {
+function generateSoundWrapper(url, callback) {
+    var successHandler = function(oEmbed) {
         callback(oEmbed);
     }
 
-    SC.oEmbed(track.stream_url + '?client_id=' + CLIENT_ID, {
+    SC.oEmbed(url + '&client_id=' + CLIENT_ID, {
         max_height: 200,
-        auto_play: false
+        auto_play: true
     }).then(successHandler);
 }
