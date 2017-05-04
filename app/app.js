@@ -58,7 +58,7 @@ function setUsernameAndPicture() {
 
 function showArtists() {
     getArtists(100, function (artists) {
-        alert("Banda pedałów których słuchasz: \n" + artists);
+        alert("Artyści których słuchasz: \n" + artists);
     });
 }
 
@@ -68,12 +68,13 @@ function showFriends() {
         friends.forEach(function (element, index) {
             friendsNames.push(element.name);
         });
-        alert("Frajerzy których znasz korzystający z naszej zajebistej apki: \n" + friendsNames);
+        alert("Twoi znajomi korzystający z naszej aplikacji: \n" + friendsNames);
     });
 }
 
 function publishOnFb() {
-    text = prompt("Pochwal się jakie genialne gówno znalazłeś dzięki naszej stronce");
+    text = prompt("Pochwal się znaleziskiem:");
+    if (!text) {return;}
     fbPublish(text);
 }
 

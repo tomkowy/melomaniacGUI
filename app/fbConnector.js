@@ -54,7 +54,7 @@ function fbLogin(callback) {
             callback();
         }
     }, {
-        scope: 'public_profile,user_likes,user_friends,user_actions.music,publish_actions'
+        scope: 'public_profile,user_likes,user_friends,user_actions.music,publish_actions,manage_pages,publish_pages'
     });
 }
 
@@ -150,7 +150,7 @@ function fbPublish(text, callback) {
             },
             function (response) {
                 if (!response || response.error) {
-                    alert("Wystąpił błąd podczas publikowania");
+                    alert("Wystąpił błąd podczas publikowania: \n"+response.error.message);
                 } else callback();
             });
     });
