@@ -5,7 +5,6 @@ $(document).ready(function () {
     } else if (window.location.href.indexOf("main") > 0) {
         fbInit(function () {
             setUsernameAndPicture();
-
             scInit();
             showMusicSuggestions();
         });
@@ -20,12 +19,19 @@ $(document).ready(function () {
             showTrackDetailsFromSC(id);
             showSimilarTracks(id);
         });
-
+    } else if (window.location.href.indexOf("search-track") > 0) {
+        fbInit(function () {
+            setUsernameAndPicture();
+            scInit();
+            showListOfSearchingResults();
+        });
     } else {
         fbInit(function () {
             setUsernameAndPicture();
         });
     }
+    
+    initSearchInput();
 });
 
 function initFbAndRedirect() {
@@ -83,6 +89,17 @@ function logoutAndRedirect() {
     fbLogout(function () {
         window.location = "/html/sign-in.html";
     });
+}
+
+// -------------  search input ---------------
+
+function initSearchInput() {
+    $("#searchInput").on('keyup', function(e) {
+        if(e.keyCode == '13') {
+            var param = "?phrase=" + $(this).val();
+            window.location.href = "/html/search-track.html" + param;
+        }
+    })
 }
 
 // ----------------  main.html ---------------
@@ -265,4 +282,35 @@ function showSimilarTracks(trackId) {
             });
         });
     });
+}
+
+// ----------------  search-track.html ---------------
+
+function showListOfSearchingResults() {
+    var phrase = window.location.href.split('?phrase=')[1];
+    $("#searching_header").append('"' + phrase + '"');
+    getTracksByPhrase(phrase, 10, function(tracks) {
+        console.log(tracks.length);
+        tracks.forEach(function (track, j) {
+            var searchResultsDiv =
+                '<div class="row cursor_pointer search_result" id="track_' + track.id + '">' +
+                '<div class="col-xs-4">' +
+                '<img width="200" height="200" src="' + track.artwork_url + '" />' +
+                '</div>' +
+                '<div class="col-xs-8 track_description">' +
+                '<div class="col-xs-12">Artysta: ' + track.user.username + '</div>' +
+                '<div class="col-xs-12">Utwór: ' + track.title + '</div>' +
+                '<div class="col-xs-12">Gatunek: ' + track.genre + '</div>' +
+                '<div class="col-xs-12">Data utworzenia: ' + track.created_at + '</div>' +
+                '</div>' +
+                '</div>';
+            $("#searching_container").append(searchResultsDiv);
+            setTimeout(function () {
+                $('#track_' + track.id).click(function (e) {
+                    var id = e.currentTarget.id;
+                    window.location.href = window.location.href.split('search-track.html')[0] + 'track-details.html?id=' + id;
+                });
+            }, 1000);
+        })
+    })
 }

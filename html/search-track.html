@@ -7,11 +7,18 @@
         Melomaniac
     </title>
     <link href="Style/DarkGray.css" rel="stylesheet" />
+    <script src='/dev/js/jquery-2.2.4.min.js'></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/html/Style/site.css">
     <meta name="viewport" content="width=device-width" />
+    <script src='/app/fbConnector.js'></script>
+    <script src="/app/scConnector.js"></script>
     <script src="/app/beConnector.js"></script>
+    <script src="/app/app.js"></script>
 </head>
 
 <body>
@@ -24,7 +31,7 @@
 							<h2>Melomaniac</h2>
 						</div>
 						<div class="col-sm-2 text-center" style="padding-top: 15px">
-							<input type="search" class="form-control">
+							<input id="searchInput" type="search" class="form-control">
 						</div>
 						<div class="col-sm-5 text-right" style="padding-top: 10px">
 							<span id="picture">zdjęcie</span>
@@ -38,19 +45,18 @@
 
 		<div id="body">
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-12">
-						<h3>Wyniki wyszukiwania dla: </h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<p>miejsce na okładkę</p>
-					</div>
-					<div class="col-sm-9">
-						<p>miejsce na dane o piosence</p>
-					</div>
-				</div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <h2 id="searching_header">Wyniki wyszukiwania dla: </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 activity-left">
+                        <div id="searching_container">
+
+                        </div>
+                    </div>
+                </div>
 			</div>
 		</div>
 

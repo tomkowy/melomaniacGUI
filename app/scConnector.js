@@ -38,3 +38,14 @@ function generateSoundWrapper(url, callback) {
         auto_play: true
     }).then(successHandler);
 }
+
+function getTracksByPhrase(phrase, limit, callback) {
+    var successHandler = function(tracks) {
+        callback(tracks);
+    }
+    
+    SC.get('/tracks', {
+        q: phrase,
+        limit: limit
+    }).then(successHandler);
+}
