@@ -1,6 +1,5 @@
 $(document).ready(function () {
     if (document.title.indexOf("starting page") > 0) {
-        alert('e-handluj z tym');
         initFbAndRedirect();
     } else if (window.location.href.indexOf("main") > 0) {
         fbInit(function () {
