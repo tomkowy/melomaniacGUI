@@ -18,6 +18,8 @@ $(document).ready(function () {
             trackDetailsController(id);
             showTrackDetailsFromSC(id);
             showSimilarTracks(id);
+            
+            getProducts(id);
         });
     } else if (window.location.href.indexOf("search-track") > 0) {
         fbInit(function () {
