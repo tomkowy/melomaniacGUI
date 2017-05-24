@@ -1,6 +1,6 @@
 //inicjalizacja Facebook SDK, koniecznie jako pierwsza wywoływana funkcja w dokumencie
-function fbInit(callback) {
-    window.fbAsyncInit = function () {
+function fbInitialize(callback) {
+    window.fbAsyncInit = function() {
         FB.init({
             appId: '798879713594636',
             xfbml: true,
@@ -16,7 +16,7 @@ function fbInit(callback) {
 
     };
 
-    (function (d, s, id) {
+    (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
             return;
@@ -28,15 +28,27 @@ function fbInit(callback) {
     }(document, 'script', 'facebook-jssdk'));
 }
 
+function fbInit(callback) {
+    fbInitialize(function() {
+        fbLoginStatus(function(status) {
+            if (status === 'connected' || window.location.href.indexOf("sign-in")>0) {
+                callback();
+            } else {
+                window.location.href = "/html/sign-in.html";
+            }
+        });
+    });
+}
+
 
 function fbLoginStatus(callback) { //w argumencie callbacka zwraca status zalogowania ('connected' jeśli zalogowany)
-    FB.getLoginStatus(function (response) {
+    FB.getLoginStatus(function(response) {
         callback(response.status);
     });
 }
 
 function fbRefreshSession(callback) {
-    fbLoginStatus(function (status) {
+    fbLoginStatus(function(status) {
         if (status === 'connected') {
             callback();
         } else {
@@ -48,7 +60,7 @@ function fbRefreshSession(callback) {
 
 function fbLogin(callback) {
     console.log("Logowanie do fb...")
-    FB.login(function (response) {
+    FB.login(function(response) {
         if (response.status === 'connected') {
             console.log("Zalogowano.")
             callback();
@@ -59,9 +71,9 @@ function fbLogin(callback) {
 }
 
 function fbLogout(callback) {
-    fbLoginStatus(function (status) {
+    fbLoginStatus(function(status) {
         if (status === 'connected') {
-            FB.logout(function (response) {
+            FB.logout(function(response) {
                 callback();
             });
         }
@@ -70,13 +82,13 @@ function fbLogout(callback) {
 }
 
 function getName(callback) { //w argumencie dla callbacka zwraca nazwę zalogowanego użytkownika
-    fbRefreshSession(function () {
+    fbRefreshSession(function() {
         FB.api(
             '/me',
             'GET', {
                 "fields": "name"
             },
-            function (response) {
+            function(response) {
                 callback(response.name);
             }
         );
@@ -84,13 +96,13 @@ function getName(callback) { //w argumencie dla callbacka zwraca nazwę zalogowa
 }
 
 function getId(callback) { //w argumencie dla callbacka zwraca id zalogowanego użytkownika
-    fbRefreshSession(function () {
+    fbRefreshSession(function() {
         FB.api(
             '/me',
             'GET', {
                 "fields": "id"
             },
-            function (response) {
+            function(response) {
                 callback(response.id);
             }
         );
@@ -99,11 +111,11 @@ function getId(callback) { //w argumencie dla callbacka zwraca id zalogowanego u
 
 
 function getPictureUrl(callback) { //w argumencie dla callbacka zwraca url zdjęcia profilowego
-    fbRefreshSession(function () {
+    fbRefreshSession(function() {
         FB.api(
             '/me/picture',
             'GET', {},
-            function (response) {
+            function(response) {
                 callback(response.data.url);
             }
         );
@@ -115,7 +127,7 @@ function getFriends(callback) { //w argumencie dla callbacka zwraca listę znajo
     FB.api( //lista elementów {id, nazwa użytkownika}
         '/me/friends',
         'GET', {},
-        function (response) {
+        function(response) {
             callback(response.data)
         }
     );
@@ -123,16 +135,16 @@ function getFriends(callback) { //w argumencie dla callbacka zwraca listę znajo
 
 
 function getArtists(limit, callback) { //w argumencie dla callbacka zwraca listę muzyków
-    fbRefreshSession(function () {
+    fbRefreshSession(function() {
         FB.api(
             '/me',
             'GET', {
                 "fields": "music.limit(" + limit + ")"
             }, //[limit] obiektów na stronę
-            function (response) {
+            function(response) {
                 var artists = [];
                 if (response.music) {
-                    response.music.data.forEach(function (element, index) {
+                    response.music.data.forEach(function(element, index) {
                         artists.push(element.name);
                     });
                 }
@@ -143,26 +155,26 @@ function getArtists(limit, callback) { //w argumencie dla callbacka zwraca list�
 }
 
 function fbPublish(text, callback) {
-    fbRefreshSession(function () {
+    fbRefreshSession(function() {
         FB.api('/me/feed',
             'POST', {
                 message: text
             },
-            function (response) {
+            function(response) {
                 if (!response || response.error) {
-                    alert("Wystąpił błąd podczas publikowania: \n"+response.error.message);
+                    alert("Wystąpił błąd podczas publikowania: \n" + response.error.message);
                 } else callback();
             });
     });
 }
 
 function getUserById(searchId, callback, dataToPass) {
-    fbRefreshSession(function () {
+    fbRefreshSession(function() {
         FB.api('/' + searchId,
             'GET', {
                 "fields": "picture,name"
             },
-            function (response) {
+            function(response) {
                 if (!response || response.error) {
                     console.log(response.error);
                 } else callback(response, dataToPass);

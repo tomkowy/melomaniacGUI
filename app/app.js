@@ -36,7 +36,7 @@ $(document).ready(function () {
 });
 
 function initFbAndRedirect() {
-    fbInit(function () {
+    fbInitialize(function () {
         fbLoginStatus(function (status) {
             if (status === 'connected') {
                 window.location.href = "/html/main.html";
