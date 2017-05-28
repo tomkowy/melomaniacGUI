@@ -13,7 +13,9 @@ function changeXmlResponseOnJson(data) {
 
     for (var i = 0; i < xmlProducts.length; i++) {
         var price = $(xmlProducts[i]).children("price")[0].childNodes[0].nodeValue.replace('[CDATA[', '').replace(']]', '');
-        jsonProducts.push({ price: parseFloat(price), url: i + 1 })
+        var url = $(xmlProducts[i]).children("meta_description")[0].childNodes[0].childNodes[0].nodeValue.replace('[CDATA[', '').replace(']]', '');
+        
+        jsonProducts.push({ price: parseFloat(price), url: url + '?sklepik' })
     }
 
     return jsonProducts;
@@ -24,7 +26,7 @@ function showBuyButtons(products) {
         if (track.price && track.url) {
             var buyButtons =
                 '<div class="col-sm-4">' +
-                '<a href="' + track.url + '"' + 'class="btn btn-primary btn-sm"">' + track.price + ' ' + track.url + '</a>' +
+                '<a href="' + track.url + '"' + 'class="btn btn-primary btn-sm"">' + track.price + ' zł</a>' +
                 '</div>';
 
             $("#buy_buttons").append(buyButtons);
@@ -39,8 +41,8 @@ function showBuyButtons(products) {
 
 function getProducts(trackId) {
     var schopsUrls = [
-        'http://testowysklep3.cba.pl/api/products?display=[id,price,minimal_quantity]&ws_key=FL4R8YPU9SWA2CWW8HY75ANPNDAYJATR',
-        'http://testowysklep3.cba.pl/api/products?display=[id,price,minimal_quantity]&ws_key=FL4R8YPU9SWA2CWW8HY75ANPNDAYJATR'
+        'http://testowysklep3.cba.pl/api/products?filter[meta_title]=' + trackId + '&display=[id,price,meta_description]&sort=price_ASC&limit=3&ws_key=FL4R8YPU9SWA2CWW8HY75ANPNDAYJATR',
+        'http://testowysklep3.cba.pl/api/products?filter[meta_title]=' + trackId + '&display=[id,price,meta_description]&sort=price_ASC&limit=3&ws_key=FL4R8YPU9SWA2CWW8HY75ANPNDAYJATR'
     ];
     var yqls = [
         'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="' + schopsUrls[0] + '"') + '&format=xml&callback=?',
