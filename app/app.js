@@ -6,6 +6,7 @@ $(document).ready(function () {
             setUsernameAndPicture();
             scInit();
             showMusicSuggestions();
+            showFriendsComments();
         });
     } else if (window.location.href.indexOf("track-details") > 0) {
         fbInit(function () {
@@ -17,7 +18,7 @@ $(document).ready(function () {
             trackDetailsController(id);
             showTrackDetailsFromSC(id);
             showSimilarTracks(id);
-            
+
             getProducts(id);
         });
     } else if (window.location.href.indexOf("search-track") > 0) {
@@ -31,7 +32,7 @@ $(document).ready(function () {
             setUsernameAndPicture();
         });
     }
-    
+
     initSearchInput();
 });
 
@@ -81,7 +82,9 @@ function showFriends() {
 
 function publishOnFb() {
     text = prompt("Pochwal się znaleziskiem:");
-    if (!text) {return;}
+    if (!text) {
+        return;
+    }
     fbPublish(text);
 }
 
@@ -95,8 +98,8 @@ function logoutAndRedirect() {
 // -------------  search input ---------------
 
 function initSearchInput() {
-    $("#searchInput").on('keyup', function(e) {
-        if(e.keyCode == '13') {
+    $("#searchInput").on('keyup', function (e) {
+        if (e.keyCode == '13') {
             var param = "?phrase=" + $(this).val();
             window.location.href = "/html/search-track.html" + param;
         }
@@ -133,6 +136,46 @@ function showMusicSuggestions() {
             })
         })
     })
+}
+
+function showFriendsComments() {
+    $('.activity-right').html('');
+    getFriends(function (friends) {
+        var friendsNames = [];
+        friends.forEach(function (element, index) {
+            console.log(element.id);
+            document.backend.commentService.getUserComments(element.id, function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    var d = data[i]
+
+                    getUserById(d.fb, function (user, comment) {
+                        console.log("UC", user, comment);
+
+                        var content = '<div class="row ' +
+                            'link_' + comment.fb + '_' + comment.soundcloud +
+                            '"> <div class="col-sm-3"> ' +
+                            '<img src="' + user.picture.data.url + '"/>' +
+                            ' </div> <div class="col-sm-9"><div class="row"><b>' +
+                            user.name +
+                            '</b></div> <div class="row"><p style="font-size: small">' +
+                            d.content +
+                            '</p></div> </div> </div>';
+                        $('.activity-right').html($('.activity-right').html() + content);
+
+                        $('.link_' + comment.fb + '_' + comment.soundcloud).on('click', function () {
+                            window.location.href = window.location.href.replace('main.html', '') + 'track-details.html?id=track_' + comment.soundcloud;
+                        });
+
+
+
+                    }, d);
+
+                }
+
+            }, function (data) {});
+        });
+    });
 }
 
 // ----------------  track-details.html ---------------
@@ -243,24 +286,24 @@ function updateRates() {
 }
 
 function showTrackDetailsFromSC(id) {
-    getTrack(id, function(track) {
+    getTrack(id, function (track) {
         $("#artwork").append('<img width="200" height="200" src="' + track.artwork_url + '" />');
         $("#track_info").append('<div class="row">' +
             '<div class="col-xs-12">Gatunek: ' + track.genre + '</div>' +
-            '<div class="col-xs-12">Data utworzenia: ' + track.created_at + 
+            '<div class="col-xs-12">Data utworzenia: ' + track.created_at +
             '</div>');
-        generateSoundWrapper(track.permalink_url, function(wrapper){
-            $("#soundWrapper").append(wrapper.html); 
+        generateSoundWrapper(track.permalink_url, function (wrapper) {
+            $("#soundWrapper").append(wrapper.html);
         });
     });
 }
 
 function showSimilarTracks(trackId) {
-    getTrack(trackId, function(track) {
+    getTrack(trackId, function (track) {
         var artist = track.user.username;
-        getTracksOfArtist(11, artist, function(tracks) {
+        getTracksOfArtist(11, artist, function (tracks) {
             tracks.forEach(function (track, j) {
-                if(track.id != trackId) {
+                if (track.id != trackId) {
                     var similarDiv = '<div class="row cursor_pointer" id="track_' + track.id + '">' +
                         '<div class="col-sm-4">' +
                         '<img width="80" height="80" src="' + track.artwork_url + '" />' +
@@ -273,12 +316,12 @@ function showSimilarTracks(trackId) {
                         '</div>' +
                         '</div>' +
                         '</div>';
-                   $("#similar_tracks").append(similarDiv);
-                   setTimeout(function() {
+                    $("#similar_tracks").append(similarDiv);
+                    setTimeout(function () {
                         $('#track_' + track.id).click(function () {
                             window.location.href = window.location.href.replace(trackId, track.id);
                         });
-                   }, 1000);
+                    }, 1000);
                 }
             });
         });
@@ -290,7 +333,7 @@ function showSimilarTracks(trackId) {
 function showListOfSearchingResults() {
     var phrase = window.location.href.split('?phrase=')[1];
     $("#searching_header").append('"' + phrase + '"');
-    getTracksByPhrase(phrase, 10, function(tracks) {
+    getTracksByPhrase(phrase, 10, function (tracks) {
         console.log(tracks.length);
         tracks.forEach(function (track, j) {
             var searchResultsDiv =

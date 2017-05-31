@@ -67,6 +67,11 @@ String.prototype.replaceAll = function (search, replacement) {
                     data: id
                 }, onSuccess, onFail);
             },
+            "getUserComments": function (userFbId, onSuccess, onFail) {
+                sendAjax(this.controllerName, "GetUserComments", "GET", {
+                    data: userFbId
+                }, onSuccess, onFail);
+            },
             "edit": function (comment, onSuccess, onFail) {
                 sendAjax(this.controllerName, "EditComment", "POST", {
                     data: comment
