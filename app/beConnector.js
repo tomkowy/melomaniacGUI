@@ -122,6 +122,6 @@ String.prototype.replaceAll = function (search, replacement) {
         };
     }
 
-    document.backend = new BackEndConnector("http://localhost:55370");
+    document.backend = new BackEndConnector("http://melomaniac.azurewebsites.net");
 
 }());
