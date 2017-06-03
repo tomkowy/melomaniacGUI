@@ -42,7 +42,7 @@ function showBuyButtons(products) {
 function getProducts(trackId) {
     var schopsUrls = [
         'http://testowysklep3.cba.pl/api/products?filter[meta_title]=' + trackId + '&display=[id,price,meta_description]&sort=price_ASC&limit=3&ws_key=FL4R8YPU9SWA2CWW8HY75ANPNDAYJATR',
-        'http://testowysklep3.cba.pl/api/products?filter[meta_title]=' + trackId + '&display=[id,price,meta_description]&sort=price_ASC&limit=3&ws_key=FL4R8YPU9SWA2CWW8HY75ANPNDAYJATR'
+        'http://testowysklep1.cba.pl/api/products?filter[meta_title]=' + trackId + '&display=[id,price,meta_description]&sort=price_ASC&limit=3&ws_key=FCL2BFC4S568ZJV7Y3IGL3RQKR3FVQFS'
     ];
     var yqls = [
         'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="' + schopsUrls[0] + '"') + '&format=xml&callback=?',
